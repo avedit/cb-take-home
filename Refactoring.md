@@ -9,3 +9,8 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+
+1. Changed from `TRIVIAL_PARTITION_KEY` to `DEFAULT_PARTITION_KEY` because its provides better context and clarity to the variables. Its not trivial but its a fallback value.
+2. Refactored the first if/else, if event is defined, then we can simple check for partition key or create a hash of `event` object. Much easier to read and comprehend. Uses latest syntax too.
+3. Refactored the second if/else as it only checks at level one, we have to be cautitious here as we have to check for candidate definition. Which makes it easier to think about at first glance. Does the same thing in fewer understandable lines.
+4. There are two lines repeated to do the same thing, so converted that into function for and named it `createHash`, which conveys the purpose perfectly. And make the code much shorter.
